@@ -1,0 +1,8 @@
+%h1 Welcome to your Task Page
+-@tasks.each do |t|
+	=t.task_name
+	= link_to "Edit", edit_task_path(t) 
+	= link_to "Delete", task_path(t), method: :delete
+
+
+
