@@ -1,11 +1,28 @@
 %h1 Welcome User!
 
--@tasks.each do |t|
-	=t.task_name
-	= link_to "Edit", edit_task_path(t) 
-	= link_to "Delete", task_path(t), method: :delete
+%h2 Create a to do: 
+=form_for @new_task  do |nt|
+	= nt.label :task_name
+	= nt.text_field :task_name
+	= nt.submit "ADD"
+%br
+
+%h3 Open Tasks:
+%table
+	%thead
+		%th Completed?
+		%th Task Name
+		%th Available Actions
+		%th
+	%tbody
+		-@tasks.each do |t|
+			%tr
+				%td= check_box_tag "completed", '1', t.completed
+				%td= t.task_name
+				%td= link_to "Edit", edit_task_path(t)
+				%td= link_to "Delete", task_path(t), method: :delete
 	%br
-	
+
 
 
 

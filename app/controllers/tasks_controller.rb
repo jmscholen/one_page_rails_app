@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    redirect_to "/"
   end
 
   def show
@@ -14,11 +14,11 @@ class TasksController < ApplicationController
   def create
     @new_task = Task.new(task_params)
     if @new_task.save
-      redirect_to :index
+      redirect_to "/"
     else
       redirect_to :new
     end
-    
+
   end
 
   def edit
@@ -28,7 +28,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
-      redirect_to :show
+      redirect_to "/"
     else
       redirect_to :edit
     end    
@@ -37,14 +37,15 @@ class TasksController < ApplicationController
   def destroy
     @task = Task.find(params[:id])
     if @task.destroy
-      redirect_to :index
+      redirect_to "/"
     else
       redirect_to :edit
+    end
   end
 
   private
   def task_params
-    params.require(:task).permit!
+    params.require(:task).permit(:task_name, :completed)
   end
 
 end
