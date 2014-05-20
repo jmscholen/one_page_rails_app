@@ -1,7 +1,9 @@
-%h2 Task Edit Page
-=form_for @task do |f|
-	= f.label :task_name
-	= f.text_field :task_name
-	= f.label :completed
-	= f.check_box :completed
-	= f.submit "Update"
+.container
+	.container
+		%h2 Task Edit 
+		=form_for(@task) do |f|
+			= f.label :task_name
+			= f.text_field :task_name
+			= f.label :completed
+			= f.check_box :completed
+			= f.submit "Update"

@@ -9,6 +9,8 @@ gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.3'
 gem 'haml'
 gem 'haml-rails'
+gem 'bootstrap'
+gem 'bootstrap-sass'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -39,5 +41,5 @@ gem 'spring',        group: :development
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development, :test]
 

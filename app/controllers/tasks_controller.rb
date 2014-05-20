@@ -14,7 +14,10 @@ class TasksController < ApplicationController
   def create
     @new_task = Task.new(task_params)
     if @new_task.save
-      redirect_to "/"
+      respond_to do |format|
+        format.js { render json: @new_task }
+        format.html { redirect_to tasks_path }
+      end
     else
       redirect_to :new
     end
@@ -28,7 +31,10 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
-      redirect_to "/"
+      respond_to do |format|
+        format.js
+        format.html { redirect_to tasks_path }
+      end
     else
       redirect_to :edit
     end    

@@ -1,0 +1,5 @@
+-form_for @new_task do |t|
+	%td= check_box_tag "completed", '1', t.completed
+	%td= t.task_name
+	%td= link_to "Edit", edit_task_path(t)
+	%td= link_to "Delete", task_path(t), method: :delete
