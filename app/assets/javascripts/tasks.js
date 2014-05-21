@@ -24,13 +24,19 @@ $(function(){
 	});
 
 
-	//$('a[href~='edit']').on('click', function(){
-	//	$('myModal').show('slow');
-	//});
+	$('a[href~='edit']').on('click', function(){
+			$('myModal').show('slow');
+			$()
+		});
+		return false;
+	});
 
 });
 
 
-
+$('.modalbutton').on('click', function(){
+$('.updatemodal').show();
+$('.form'.append('<input type="hidden" value=" + task_id + "/>')
+});
 
 		

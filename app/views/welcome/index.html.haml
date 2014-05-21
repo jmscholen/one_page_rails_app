@@ -16,12 +16,12 @@
 			%th Available Actions
 			%th
 		%tbody#help
-			-@tasks.each do |t|
+			-@tasks.each do |task|
 				%tr
-					%td= check_box_tag "completed", '1', t.completed
-					%td= t.task_name
-					%td= link_to "Edit", edit_task_path(t)
-					%td= link_to "Delete", task_path(t), method: :delete
+					%td= check_box_tag "completed", '1', task.completed
+					%td= task.task_name
+					%td= link_to "Edit", edit_task_path(task)
+					%td= link_to "Delete", task_path(task), method: :delete
 		%br
 
 / Modal
@@ -32,7 +32,15 @@
 				%button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
 				%h4#myModalLabel.modal-title Task Update
 			.modal-body
-				Test
+				.form
+					%h2 Task Edit 
+					/ =form_tag(task_path(task) method: "get"remote: true) do 
+					/ 	= hidden_field_tag :task_id, value: task.id
+					/ 	= label_tag :task_name
+					/ 	= text_field_tag :task_name
+					/ 	= label_tag :completed
+					/ 	= check_box_tag :completed
+					/ 	= submit_tag "Update"
 			.modal-footer
 				%button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
 				%button.btn.btn-primary{:type => "button"} Save changes

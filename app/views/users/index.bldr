@@ -1,0 +1,3 @@
+collection :users => @users do |user|
+	attributes :name, :user_id
+end
